@@ -11,8 +11,9 @@ My app is called Blackjack. Players face an AI dealer in a classic game of Black
 ## Wire Frames
 
 **Initial Landing View**
-
+    https://imgur.com/a/z3AH1ku
 **Results View**
+    https://imgur.com/a/Xt6S3r9
 
 ## User Stories
 
@@ -30,3 +31,4 @@ My app is called Blackjack. Players face an AI dealer in a classic game of Black
 - As a player, I would like to see realistic, animated cards being dealt and played.
 - As a player, I would like to see optimal strategies displayed for each hand.
 - As a player, I would like to implement a wagering feature, keeping track of bets, wins, losses.
+- As a player, I would like one of the dealer's cards to start face-down.
