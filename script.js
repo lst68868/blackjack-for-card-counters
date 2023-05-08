@@ -19,6 +19,7 @@ dealBtn.addEventListener("click", () => {
     dealBtn.disabled = true;
     hitBtn.disabled = false;
     standBtn.disabled = false;
+    document.querySelector("h3").innerText = "Click 'Hit' or 'Stand'";
     dealHand();
 });
 
@@ -30,6 +31,7 @@ hitBtn.addEventListener("click", () => {
 });
 
 standBtn.addEventListener("click", () => {
+    document.querySelector("h3").innerText = "Click 'deal' to play the next hand.";
     dealerTurn();
 });
 
@@ -67,12 +69,19 @@ function getHandScore(hand) {
     return score;
 }
 
-function displayCards(hand, element) {
+function displayCards(hand, element, isDealer = false) {
     element.innerHTML = "";
-    for (const card of hand) {
-        element.innerHTML += `<div class="card">${card.value}${card.suit}</div>`;
+    for (let i = 0; i < hand.length; i++) {
+        const card = hand[i];
+        if (isDealer && i === 0) {
+            element.innerHTML += `<div class="card facedown"></div>`;
+        } else {
+            element.innerHTML += `<div class="card">${card.value}${card.suit}</div>`;
+        }
     }
 }
+
+
 
 function displayScore(hand, element) {
     element.textContent = `Score: ${getHandScore(hand)}`;
@@ -86,17 +95,29 @@ function checkBust(hand, playerType) {
 }
 
 function dealHand() {
-
     playerHand = [getRandomCard(), getRandomCard()];
     dealerHand = [getRandomCard(), getRandomCard()];
 
     displayCards(playerHand, playerCards);
-    displayCards(dealerHand, dealerCards);
+    displayCards(dealerHand, dealerCards, true); // Pass true for isDealer
     displayScore(playerHand, playerScore);
     displayScore(dealerHand, dealerScore);
 }
 
+function revealDealerCard() {
+    const facedownCard = dealerCards.getElementsByClassName('facedown')[0];
+    if (facedownCard) {
+        const card = dealerHand[0];
+        facedownCard.classList.remove('facedown');
+        facedownCard.innerHTML = `${card.value}${card.suit}`;
+    }
+}
+
+
 function dealerTurn() {
+    // Reveal the facedown card before the dealer takes their turn
+    revealDealerCard();
+
     while (getHandScore(dealerHand) < 17) {
         dealerHand.push(getRandomCard());
         displayCards(dealerHand, dealerCards);
@@ -117,6 +138,7 @@ function dealerTurn() {
 
     endGame();
 }
+
 
 function resetGame() {
     playerHand = [];

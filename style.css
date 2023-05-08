@@ -52,7 +52,7 @@ h1 {
 }
 
 .card {
-    background-color: orange;
+    background-color: whitesmoke;
     border: 1px solid #000;
     border-radius: 5px;
     padding: 10px;
@@ -61,10 +61,18 @@ h1 {
     text-align: center;
     width: 40px;
     height: 60px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); */
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.facedown {
+    background-image: url(./card-back.png);
+    background-size: cover;
+    background-position: center;
+    width: 40px;
+    height: 60px;
 }
 
 .buttons {
