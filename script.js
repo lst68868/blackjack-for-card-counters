@@ -75,14 +75,6 @@ function getCardCountValue(card) {
     console.log(`The running count is: ${count}.`);
   }
   
-    // if(playedCards[i][1] === "A"){
-    //     count--;
-    // } else if (["2", "3", "4", "5", "6"].includes(playedCards.value)){
-    //     count++;
-    // } else {
-    //     count = count;
-    // }
-    // console.log(`Count is: ${count}`);
 
 function getCardValue(card) {
     if (card.value === "A") {
@@ -133,6 +125,7 @@ function displayScore(hand, element) {
 function checkBust(hand, playerType) {
     if (getHandScore(hand) > 21) {
         message.textContent = `${playerType === "player" ? "Player" : "Dealer"} busted! The count is ${count}.`;
+        revealDealerCard();
         endGame();
     }
 }
@@ -174,11 +167,11 @@ function dealerTurn() {
     incrementCount();
 
     if (dealerFinalScore <= 21 && dealerFinalScore > playerFinalScore) {
-        message.textContent = `Dealer wins! The count is ${count}`;
+        message.textContent = `Dealer wins! The count is ${count}.`;
     } else if (playerFinalScore === dealerFinalScore) {
         message.textContent = `"It's a tie! The count is ${count}.`;
     } else {
-        message.textContent = `Player wins! The count is ${count}`;
+        message.textContent = `Player wins! The count is ${count}.`;
     }
     endGame();
 }
