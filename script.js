@@ -109,9 +109,9 @@ function displayCards(hand, element, isDealer = false) {
     for (let i = 0; i < hand.length; i++) {
         const card = hand[i];
         if (isDealer && i === 0) {
-            element.innerHTML += `<div class="card facedown"></div>`;
+            element.innerHTML += `<div class="card facedown"><div class="card-back"></div></div>`;
         } else {
-            element.innerHTML += `<div class="card">${card.value}${card.suit}</div>`;
+            element.innerHTML += `<div class="card"><span>${card.value}${card.suit}</span></div>`;
         }
     }
 }
@@ -124,7 +124,7 @@ function displayScore(hand, element) {
 
 function checkBust(hand, playerType) {
     if (getHandScore(hand) > 21) {
-        message.textContent = `${playerType === "player" ? "Player" : "Dealer"} busted! The count is ${count}.`;
+        message.textContent = `${playerType === "player" ? "Player" : "Dealer"} busted!`;
         revealDealerCard();
         endGame();
     }
@@ -145,7 +145,8 @@ function revealDealerCard() {
     if (facedownCard) {
         const card = dealerHand[0];
         facedownCard.classList.remove('facedown');
-        facedownCard.innerHTML = `${card.value}${card.suit}`;
+        facedownCard.classList.add('flip'); // Add flip class to apply the animation
+        facedownCard.innerHTML = `<span class="flip">${card.value}${card.suit}</span>`;
     }
 }
 
@@ -169,7 +170,7 @@ function dealerTurn() {
     if (dealerFinalScore <= 21 && dealerFinalScore > playerFinalScore) {
         message.textContent = `Dealer wins! The count is ${count}.`;
     } else if (playerFinalScore === dealerFinalScore) {
-        message.textContent = `"It's a tie! The count is ${count}.`;
+        message.textContent = `It's a tie! The count is ${count}.`;
     } else {
         message.textContent = `Player wins! The count is ${count}.`;
     }
