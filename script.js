@@ -15,6 +15,7 @@ let playedCards = [];
 let playerHand = [];
 let dealerHand = [];
 let count = 0;
+document.getElementById("count").innerText = `The count is...`;
 
 dealBtn.addEventListener("click", () => {
     message.textContent = ''; // Clear the win/loss message
@@ -72,7 +73,7 @@ function getCardCountValue(card) {
       count += getCardCountValue(dealerHand[i]);
     }
   
-    console.log(`The running count is: ${count}.`);
+    document.getElementById("count").innerText = `The count is...${count}.`;
   }
   
 
@@ -168,11 +169,11 @@ function dealerTurn() {
     incrementCount();
 
     if (dealerFinalScore <= 21 && dealerFinalScore > playerFinalScore) {
-        message.textContent = `Dealer wins! The count is ${count}.`;
+        message.textContent = `Dealer wins!`;
     } else if (playerFinalScore === dealerFinalScore) {
-        message.textContent = `It's a tie! The count is ${count}.`;
+        message.textContent = `It's a tie!`;
     } else {
-        message.textContent = `Player wins! The count is ${count}.`;
+        message.textContent = `Player wins!`;
     }
     endGame();
 }

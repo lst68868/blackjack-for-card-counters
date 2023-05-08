@@ -29,6 +29,10 @@ h1 {
     margin-bottom: 5px;
 }
 
+#count {
+    font-weight: bold;
+}
+
 .table {
     display: flex;
     flex-direction: column;
