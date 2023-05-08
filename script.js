@@ -10,9 +10,11 @@ const dealerScore = document.getElementById("dealer-score");
 
 const suits = ["C", "D", "H", "S"];
 const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+let playedCards = [];
 
 let playerHand = [];
 let dealerHand = [];
+let count = 0;
 
 dealBtn.addEventListener("click", () => {
     message.textContent = ''; // Clear the win/loss message
@@ -38,8 +40,49 @@ standBtn.addEventListener("click", () => {
 function getRandomCard() {
     const suit = suits[Math.floor(Math.random() * suits.length)];
     const value = values[Math.floor(Math.random() * values.length)];
-    return { suit, value };
+
+    
+    if (playedCards.includes(`${value}${suit}`)) {
+        return getRandomCard();
+    }
+
+    if(playedCards.length === 52) {
+        resetGame();
+    }
+
+    playedCards.push(`${value}${suit}`);
+    return { value, suit };
 }
+
+function getCardCountValue(card) {
+    if (["A", "10", "J", "Q", "K"].includes(card.value)) {
+      return -1;
+    } else if (["2", "3", "4", "5", "6"].includes(card.value)) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+  
+  function incrementCount() {
+    for (let i = 0; i < playerHand.length; i++) {
+      count += getCardCountValue(playerHand[i]);
+    }
+    for (let i = 0; i < dealerHand.length; i++) {
+      count += getCardCountValue(dealerHand[i]);
+    }
+  
+    console.log(`The running count is: ${count}.`);
+  }
+  
+    // if(playedCards[i][1] === "A"){
+    //     count--;
+    // } else if (["2", "3", "4", "5", "6"].includes(playedCards.value)){
+    //     count++;
+    // } else {
+    //     count = count;
+    // }
+    // console.log(`Count is: ${count}`);
 
 function getCardValue(card) {
     if (card.value === "A") {
@@ -89,7 +132,7 @@ function displayScore(hand, element) {
 
 function checkBust(hand, playerType) {
     if (getHandScore(hand) > 21) {
-        message.textContent = `${playerType === "player" ? "Player" : "Dealer"} busted!`;
+        message.textContent = `${playerType === "player" ? "Player" : "Dealer"} busted! The count is ${count}.`;
         endGame();
     }
 }
@@ -128,14 +171,15 @@ function dealerTurn() {
     const playerFinalScore = getHandScore(playerHand);
     const dealerFinalScore = getHandScore(dealerHand);
 
-    if (dealerFinalScore <= 21 && dealerFinalScore > playerFinalScore) {
-        message.textContent = "Dealer wins!";
-    } else if (playerFinalScore === dealerFinalScore) {
-        message.textContent = "It's a tie!";
-    } else {
-        message.textContent = "Player wins!";
-    }
+    incrementCount();
 
+    if (dealerFinalScore <= 21 && dealerFinalScore > playerFinalScore) {
+        message.textContent = `Dealer wins! The count is ${count}`;
+    } else if (playerFinalScore === dealerFinalScore) {
+        message.textContent = `"It's a tie! The count is ${count}.`;
+    } else {
+        message.textContent = `Player wins! The count is ${count}`;
+    }
     endGame();
 }
 
@@ -143,7 +187,9 @@ function dealerTurn() {
 function resetGame() {
     playerHand = [];
     dealerHand = [];
-    message.textContent = "";
+    playedCards = [];
+    count = 0;
+    message.textContent = "Shuffling new deck...";
     displayCards(playerHand, playerCards);
     displayCards(dealerHand, dealerCards);
     displayScore(playerHand, playerScore);
@@ -155,20 +201,3 @@ function endGame() {
     hitBtn.disabled = true;
     standBtn.disabled = true;
 }
-
-// function stand() {
-//     let gameOver = playDealerHand();
-//     if (gameOver) {
-//         displayWinner();
-//     }
-// }
-
-// function displayWinner() {
-//     if (playerScore === dealerScore) {
-//         winMessage.innerText = "It's a tie!";
-//     } else if (playerScore > 21 || (dealerScore <= 21 && dealerScore > playerScore)) {
-//         winMessage.innerText = "Dealer wins!";
-//     } else {
-//         winMessage.innerText = "You win!";
-//     }
-// }
