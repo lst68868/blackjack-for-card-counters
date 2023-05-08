@@ -9,6 +9,10 @@ body {
     margin: 0;
 }
 
+h3 {
+    margin: 12px 0;
+}
+
 .main {
     scale: 1.75;
     display: flex;
@@ -143,8 +147,7 @@ button:disabled {
 #message {
     font-size: 20px;
     font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin: 8px 0;
     text-align: center;
 }
 
@@ -153,3 +156,19 @@ button:disabled {
         scale: 1.4;
     }
   }
+/* 
+  .icon-top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .icon-bottom {
+    transform: scaleY(-1);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* .icon {
+    width: 16px;
+    height: 16px;
+  } */

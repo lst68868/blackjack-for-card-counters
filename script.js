@@ -110,13 +110,30 @@ function displayCards(hand, element, isDealer = false) {
     for (let i = 0; i < hand.length; i++) {
         const card = hand[i];
         if (isDealer && i === 0) {
-            element.innerHTML += `<div class="card facedown"><div class="card-back"></div></div>`;
+            element.innerHTML += `
+            <div class="card facedown">
+                <div class="card-back">
+                </div>
+            </div>
+            `;
         } else {
-            element.innerHTML += `<div class="card"><span>${card.value}${card.suit}</span></div>`;
+            element.innerHTML += `
+            <div class="card">
+                <span>${card.value}${card.suit}</span>
+            </div>
+            `;
         }
     }
 }
 
+// <div class="icon-top">
+                //     <img class="icon" src="card-back.png"></img>
+                //     <img class="icon" src="card-back.png"></img>
+                // </div>
+// <div class="icon-top">
+                //     <img class="icon" src="card-back.png"></img>
+                //     <img class="icon" src="card-back.png"></img>
+                // </div>
 
 
 function displayScore(hand, element) {
