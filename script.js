@@ -126,16 +126,6 @@ function displayCards(hand, element, isDealer = false) {
     }
 }
 
-// <div class="icon-top">
-                //     <img class="icon" src="card-back.png"></img>
-                //     <img class="icon" src="card-back.png"></img>
-                // </div>
-// <div class="icon-top">
-                //     <img class="icon" src="card-back.png"></img>
-                //     <img class="icon" src="card-back.png"></img>
-                // </div>
-
-
 function displayScore(hand, element) {
     element.textContent = `Score: ${getHandScore(hand)}`;
 }
@@ -213,3 +203,12 @@ function endGame() {
     hitBtn.disabled = true;
     standBtn.disabled = true;
 }
+
+// <div class="icon-top">
+                //     <img class="icon" src="card-back.png"></img>
+                //     <img class="icon" src="card-back.png"></img>
+                // </div>
+// <div class="icon-top">
+                //     <img class="icon" src="card-back.png"></img>
+                //     <img class="icon" src="card-back.png"></img>
+                // </div>
