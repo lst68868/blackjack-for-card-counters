@@ -2,7 +2,9 @@
 
 Welcome to Blackjack! 
 
-Players face an AI dealer in a classic game of Blackjack, coded according to the real sequence of play at a casino (cards are dealt, player hits until they choose to stand or, regrettably, bust.
+Players face an AI dealer in a classic game of Blackjack, coded according to the real sequence of play at a casino (cards are dealt, player hits until they choose to stand or, regrettably, bust. 
+
+My primary purpose in creating this app is to provide a quick, simple "training simulator" for card-counting at a real casino!
 
 I created the app using vanilla JS, HTML5, and CSS3, with an emphasis on factoring my code usng OOP and an MVP framework.
 
@@ -24,9 +26,9 @@ I'm particularly proud of my implementation of the "count" feature, which not on
 
 My stretch goals include (but are not limited to):
 
--add an optional "hand total" feature
--add card-face visuals
--add multiple players and styles of play (hit vs stand on soft 17, etc)
--add a blackjack feature complete with insurance, 3/2 payout, etc.
+    --add an optional "hand total" feature
+    --add card-face visuals
+    --add multiple players and styles of play (hit vs stand on soft 17, etc)
+    --add a blackjack feature complete with insurance, 3/2 payout, etc.
 
-I'm very excited to extend these skills towards developing an "endless runner" game using only vanilla JS and HTML canvas.
+I'm very excited to extend these skills towards developing more advanced mobile games.
