@@ -1,6 +1,6 @@
 # blackjack-for-card-counters
 
-Welcome to Blackjack! 
+Welcome to Blackjack! Click here to play: https://incomparable-narwhal-91a654.netlify.app/
 
 Players face an AI dealer in a classic game of Blackjack, coded according to the real sequence of play at a casino (cards are dealt, player hits until they choose to stand or, regrettably, bust. 
 
