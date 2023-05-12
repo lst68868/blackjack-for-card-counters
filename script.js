@@ -90,6 +90,7 @@ function incrementCount() {
 }
 
 function getCardValue(card) {
+    // Returns the numerical value of a card
     if (card.value === "A") {
         return 11;
     } else if (["K", "Q", "J"].includes(card.value)) {
@@ -100,6 +101,7 @@ function getCardValue(card) {
 }
 
 function getHandScore(hand) {
+    // Calculates and returns the score of a hand of cards
     let score = 0;
     let aces = 0;
 
@@ -109,6 +111,7 @@ function getHandScore(hand) {
         score += cardValue;
     }
 
+    // Adjusts the score if there are aces and the total score exceeds 21
     while (score > 21 && aces > 0) {
         score -= 10;
         aces--;
@@ -117,11 +120,14 @@ function getHandScore(hand) {
     return score;
 }
 
+
 function displayCards(hand, element, isDealer = false) {
+    // Displays the cards in a given hand
     element.innerHTML = "";
     for (let i = 0; i < hand.length; i++) {
         const card = hand[i];
         if (isDealer && i === 0) {
+            // Displays facedown card for the dealer's first card
             element.innerHTML += `
             <div class="card facedown">
                 <div class="card-back">
@@ -129,6 +135,7 @@ function displayCards(hand, element, isDealer = false) {
             </div>
             `;
         } else {
+            // Displays a card element showing the value and suit of each card
             element.innerHTML += `
             <div class="card">
                 <span>${card.value}${card.suit}</span>
@@ -139,10 +146,12 @@ function displayCards(hand, element, isDealer = false) {
 }
 
 function displayScore(hand, element) {
+    // Displays the score of a given hand
     element.textContent = `Score: ${getHandScore(hand)}`;
 }
 
 function checkBust(hand, playerType) {
+    // Checks if a hand has busted (score > 21) and ends the game if true
     if (getHandScore(hand) > 21) {
         message.textContent = `${playerType === "player" ? "Player" : "Dealer"} busted!`;
         revealDealerCard();
@@ -150,17 +159,22 @@ function checkBust(hand, playerType) {
     }
 }
 
+
 function dealHand() {
+    // Deals initial cards to the player and the dealer
     playerHand = [getRandomCard(), getRandomCard()];
     dealerHand = [getRandomCard(), getRandomCard()];
 
+    // Displays the cards and scores for both player and dealer
     displayCards(playerHand, playerCards);
     displayCards(dealerHand, dealerCards, true); // Pass true for isDealer
     displayScore(playerHand, playerScore);
     displayScore(dealerHand, dealerScore);
 }
 
+
 function revealDealerCard() {
+    // Reveals the facedown card of the dealer
     const facedownCard = dealerCards.getElementsByClassName('facedown')[0];
     if (facedownCard) {
         const card = dealerHand[0];
