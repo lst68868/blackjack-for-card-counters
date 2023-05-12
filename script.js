@@ -230,14 +230,3 @@ function endGame() {
     hitBtn.disabled = true;
     standBtn.disabled = true;
 }
-
-//Code stored for later use:
-
-// <div class="icon-top">
-                //     <img class="icon" src="card-back.png"></img>
-                //     <img class="icon" src="card-back.png"></img>
-                // </div>
-// <div class="icon-top">
-                //     <img class="icon" src="card-back.png"></img>
-                //     <img class="icon" src="card-back.png"></img>
-                // </div>
