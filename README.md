@@ -24,9 +24,9 @@ I'm particularly proud of my implementation of the "count" feature, which not on
 
 My stretch goals include (but are not limited to):
 
--add an optional "hand total" feature
--add card-face visuals
--add multiple players and styles of play (hit vs stand on soft 17, etc)
--add a blackjack feature complete with insurance, 3/2 payout, etc.
+    --add an optional "hand total" feature
+    --add card-face visuals
+    --add multiple players and styles of play (hit vs stand on soft 17, etc)
+    --add a blackjack feature complete with insurance, 3/2 payout, etc.
 
 I'm very excited to extend these skills towards developing an "endless runner" game using only vanilla JS and HTML canvas.
